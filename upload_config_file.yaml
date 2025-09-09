@@ -1,0 +1,13 @@
+---
+- name: Upload config file to all webservers
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Upload configuration file
+      copy:
+        src: ./configs/nginx.conf
+        dest: /etc/nginx/nginx.conf
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes # Makes a backup before replacing
