@@ -1,0 +1,11 @@
+---
+- name: Updating file permission on webservers
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Changing file permission to 0644
+      ansible.builtin.file:
+        path: /etc/config.xml
+        owner: root
+        group: root
+        mode: '0644'
